@@ -11,7 +11,7 @@ const Footer = () => {
                 <button type="button" class="btn btn-outline-danger"><FaYoutube /></button>{' '}
                 <button type="button" class="btn btn-outline-info"><FaTwitter /></button>
             </p>
-            <p>© 2023 Copyright: HR's Window</p>
+            <p>©2023 Copyright: HR's Window</p>
         </div>
     );
 };
