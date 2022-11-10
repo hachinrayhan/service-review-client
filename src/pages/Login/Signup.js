@@ -4,40 +4,57 @@ import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 
-const Login = () => {
-    const { login } = useContext(AuthContext);
+const Signup = () => {
     const [error, setError] = useState('');
+    const { createUser, updateUserProfile, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
-    const from = location.state?.from?.pathname || '/';
 
     const handleSubmit = e => {
         e.preventDefault();
         const form = e.target;
+        const name = form.name.value;
+        const photoURL = form.photourl.value;
+        const profile = { displayName: name, photoURL: photoURL }
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         setError('');
 
-        login(email, password)
+        createUser(email, password)
             .then(result => {
                 const user = result.user;
                 console.log(user);
-                toast.success('Congrats! Login Successful');
+                updateUserProfile(profile)
+                    .then(() => { console.log('updated user') })
+                    .catch(error => {
+                        setError(error.message);
+                    })
+                toast.success('Congrats! Signup Successful');
                 form.reset();
-                navigate(from, { replace: true });
+                navigate('/');
             })
             .catch(error => {
                 console.error(error);
                 setError(error.message);
             })
+        // .finally(() => {
+        //     setLoading(false);
+        // })
     }
+
     return (
         <Form onSubmit={handleSubmit} className='container w-50 text-start my-5 bg-light border rounded-2 p-4 fw-bold'>
-            <h2 className='text-center'>Login</h2>
+            <h2 className='text-center'>Sign Up</h2>
+            <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Label>Full Name</Form.Label>
+                <Form.Control name='name' type="text" placeholder="Enter Your Full Name" required />
+            </Form.Group>
+            <Form.Group className="mb-3" controlId="formBasicURL">
+                <Form.Label>Photo URL</Form.Label>
+                <Form.Control name='photourl' type="text" placeholder="Enter Your Photo URL" />
+            </Form.Group>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control name='email' type="email" placeholder="Enter email" required />
@@ -52,9 +69,9 @@ const Login = () => {
             <Button variant="primary" type="submit">
                 Submit
             </Button>
-            <p>Don't have an account? <Link to={'/signup'}>Sign up</Link></p>
+            <p>Already have an account? <Link to={'/login'}>Log in</Link></p>
         </Form>
     );
 };
 
-export default Login;
+export default Signup;
