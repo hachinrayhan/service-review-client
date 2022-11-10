@@ -39,9 +39,9 @@ const Signup = () => {
                 console.error(error);
                 setError(error.message);
             })
-        // .finally(() => {
-        //     setLoading(false);
-        // })
+            .finally(() => {
+                setLoading(false);
+            })
     }
 
     return (
