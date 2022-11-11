@@ -20,7 +20,7 @@ const Contents = () => {
                     contents.map(content => <ContentCart key={content._id} content={content}></ContentCart>)
                 }
             </Row>
-            <Link to={'/contents'}><Button className='mt-3' variant="info">See All</Button></Link>
+            <Link to={'/contents'}><Button className='mt-3 w-25' variant="info">See All</Button></Link>
         </div>
     );
 };
