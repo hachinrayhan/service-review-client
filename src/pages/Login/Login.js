@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { login, googleProviderLogin, loading, setLoading } = useContext(AuthContext);
@@ -57,6 +58,9 @@ const Login = () => {
     }
     return (
         <div className='container my-5'>
+            <Helmet>
+                <title>HR's Windows - Login</title>
+            </Helmet>
             {
                 loading ?
                     <Spinner animation="border" role="status">

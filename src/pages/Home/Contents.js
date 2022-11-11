@@ -17,7 +17,6 @@ const Contents = () => {
     }, [limit])
     return (
         <div className='container my-5'>
-            <h2>My created contents for you</h2>
             {
                 loading ?
                     <Spinner animation="border" role="status">
@@ -26,6 +25,7 @@ const Contents = () => {
                     :
                     <></>
             }
+            <h2>My created contents for you</h2>
             <Row xs={1} md={2} lg={3} className="g-4">
                 {
                     contents.map(content => <ContentCart key={content._id} content={content}></ContentCart>)

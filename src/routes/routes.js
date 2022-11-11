@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../layout/Main";
+import AddContent from "../pages/AddContent";
 import Blog from "../pages/Blog";
 import ContentDetails from "../pages/ContentDetails";
 import AllContents from "../pages/Home/AllContents";
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
             {
                 path: '/my-reviews',
                 element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
+            },
+            {
+                path: '/add-content',
+                element: <AddContent></AddContent>
             }
         ]
     }

@@ -1,9 +1,13 @@
 import React from 'react';
 import Accordion from 'react-bootstrap/Accordion';
+import { Helmet } from 'react-helmet-async';
 
 const Blog = () => {
     return (
         <Accordion className='container w-75 my-5 text-start'>
+            <Helmet>
+                <title>HR's Windows - Blog</title>
+            </Helmet>
             <h2>Questions and Answers Section</h2>
             <Accordion.Item eventKey="0">
                 <Accordion.Header>#1 Difference between SQL and NoSQL</Accordion.Header>
