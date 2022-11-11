@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Button } from 'react-bootstrap';
 import { Link, useLoaderData } from 'react-router-dom';
 import ContentSection from './ContentSection';
@@ -10,8 +10,15 @@ import toast from 'react-hot-toast';
 
 const ContentDetails = () => {
     const content = useLoaderData();
-    const { _id, name, reviews } = content;
+    const [updatedContent, setUpdatedContent] = useState(content);
+    const { _id, name, reviews } = updatedContent;
     const { user } = useContext(AuthContext);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/contents/${_id}`)
+            .then(res => res.json())
+            .then(data => setUpdatedContent(data))
+    }, [_id, updatedContent])
 
     const addReview = (e) => {
         e.preventDefault();
@@ -31,6 +38,7 @@ const ContentDetails = () => {
                 console.log(data);
                 if (data.modifiedCount === 1) {
                     toast.success('Review added successfully');
+                    form.reset();
                 }
             })
     }
