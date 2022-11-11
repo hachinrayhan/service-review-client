@@ -2,7 +2,7 @@ import React from 'react';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { useState } from 'react';
 import { useContext } from 'react';
-import { ButtonGroup } from 'react-bootstrap';
+import { ButtonGroup, Spinner } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import toast from 'react-hot-toast';
@@ -11,7 +11,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import { FaGoogle } from 'react-icons/fa';
 
 const Login = () => {
-    const { login, googleProviderLogin, setLoading } = useContext(AuthContext);
+    const { login, googleProviderLogin, loading, setLoading } = useContext(AuthContext);
     const googleProvider = new GoogleAuthProvider();
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -57,6 +57,14 @@ const Login = () => {
     }
     return (
         <div className='container my-5'>
+            {
+                loading ?
+                    <Spinner animation="border" role="status">
+                        <span className="visually-hidden">Loading...</span>
+                    </Spinner>
+                    :
+                    <></>
+            }
             <h2 className='text-center'>Login</h2>
             <ButtonGroup vertical className='w-50'>
                 <Button onClick={googleLogin} variant='outline-primary' className='mb-3 fs-1 fw-bold'><FaGoogle /> Login with Google</Button>

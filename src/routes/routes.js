@@ -25,7 +25,7 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/contents/:id',
-                loader: ({ params }) => fetch(`http://localhost:5000/contents/${params.id}`),
+                loader: ({ params }) => fetch(`https://a11-service-review-server-six.vercel.app/contents/${params.id}`),
                 element: <ContentDetails></ContentDetails>
             },
             {

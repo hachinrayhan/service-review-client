@@ -15,7 +15,7 @@ const ContentDetails = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/contents/${_id}`)
+        fetch(`https://a11-service-review-server-six.vercel.app/contents/${_id}`)
             .then(res => res.json())
             .then(data => setUpdatedContent(data))
     }, [_id, updatedContent])
@@ -26,7 +26,7 @@ const ContentDetails = () => {
         const review = form.review.value;
         console.log(_id, user.photoURL, user.displayName, review);
         const object = { photo: user.photoURL, name: user.displayName, review };
-        fetch(`http://localhost:5000/contents/${_id}`, {
+        fetch(`https://a11-service-review-server-six.vercel.app/contents/${_id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json'

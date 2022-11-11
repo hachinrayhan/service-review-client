@@ -6,7 +6,7 @@ const AllContents = () => {
     const [contents, setContents] = useState([]);
     const limit = 0;
     useEffect(() => {
-        fetch(`http://localhost:5000/contents?limit=${limit}`)
+        fetch(`https://a11-service-review-server-six.vercel.app/contents?limit=${limit}`)
             .then(res => res.json())
             .then(data => setContents(data));
     }, [limit])
