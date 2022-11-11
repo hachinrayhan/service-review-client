@@ -6,6 +6,8 @@ import AllContents from "../pages/Home/AllContents";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Login/Signup";
+import MyReviews from "../pages/MyReviews";
+import PrivateRoute from "./PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -37,6 +39,10 @@ export const router = createBrowserRouter([
             {
                 path: '/blog',
                 element: <Blog></Blog>
+            },
+            {
+                path: '/my-reviews',
+                element: <PrivateRoute><MyReviews></MyReviews></PrivateRoute>
             }
         ]
     }
