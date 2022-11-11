@@ -18,6 +18,21 @@ const ContentDetails = () => {
         const form = e.target;
         const review = form.review.value;
         console.log(_id, user.photoURL, user.displayName, review);
+        const object = { photo: user.photoURL, name: user.displayName, review };
+        fetch(`http://localhost:5000/contents/${_id}`, {
+            method: 'PATCH',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(object)
+        })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data);
+                if (data.modifiedCount === 1) {
+                    toast.success('Review added successfully');
+                }
+            })
     }
 
     return (
