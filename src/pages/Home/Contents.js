@@ -15,18 +15,17 @@ const Contents = () => {
             .then(res => res.json())
             .then(data => setContents(data));
     }, [limit])
+
     return (
         <div className='container my-5'>
             {
                 loading ?
-                    <Spinner animation="border" role="status">
-                        <span className="visually-hidden">Loading...</span>
-                    </Spinner>
+                    <Spinner animation="border" variant="info" />
                     :
                     <></>
             }
             <h2>My created contents for you</h2>
-            <Row xs={1} md={2} lg={3} className="g-4">
+            <Row xs={1} md={2} lg={3} className="g-4 mt-2">
                 {
                     contents.map(content => <ContentCart key={content._id} content={content}></ContentCart>)
                 }
