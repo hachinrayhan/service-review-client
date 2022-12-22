@@ -7,39 +7,45 @@ import image3 from '../../images/img3.png';
 const Slider = () => {
     return (
         <Carousel className='container'>
-            <Carousel.Item>
+            <Carousel.Item className='position-relative'>
                 <img
                     className="d-block w-100"
                     src={image1}
                     alt="First slide"
                 />
-                <Carousel.Caption>
-                    <h3 className='text-info'>Welcome to HR's Window</h3>
-                    <p className='text-info'>You can access all of my contents from your HOME</p>
+                <Carousel.Caption className="w-100 h-100 bg-dark text-white bg-opacity-25 position-absolute start-0 top-0 position-relative">
+                    <div className='position-absolute bottom-0 start-50 translate-middle'>
+                        <h3>Welcome to HR's Window</h3>
+                        <p>You can access all of my contents from your HOME</p>
+                    </div>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item className='position-relative'>
                 <img
                     className="d-block w-100"
                     src={image2}
                     alt="Second slide"
                 />
 
-                <Carousel.Caption>
-                    <h3 className='text-info'>Welcome to HR's Window</h3>
-                    <p className='text-info'>You will have a effective lesson plan</p>
+                <Carousel.Caption className="w-100 h-100 bg-dark text-white bg-opacity-25 position-absolute start-0 top-0 position-relative">
+                    <div className='position-absolute bottom-0 start-50 translate-middle'>
+                        <h3>Welcome to HR's Window</h3>
+                        <p>You can access all of my contents from your HOME</p>
+                    </div>
                 </Carousel.Caption>
             </Carousel.Item>
-            <Carousel.Item>
+            <Carousel.Item className='position-relative'>
                 <img
                     className="d-block w-100"
                     src={image3}
                     alt="Third slide"
                 />
 
-                <Carousel.Caption>
-                    <h3 className='text-info'>Welcome to HR's Window</h3>
-                    <p className='text-info'>You can asses yourself with different tests</p>
+                <Carousel.Caption className="w-100 h-100 bg-dark text-white bg-opacity-25 position-absolute start-0 top-0 position-relative">
+                    <div className='position-absolute bottom-0 start-50 translate-middle'>
+                        <h3>Welcome to HR's Window</h3>
+                        <p>You can access all of my contents from your HOME</p>
+                    </div>
                 </Carousel.Caption>
             </Carousel.Item>
         </Carousel>
